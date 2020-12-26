@@ -1,0 +1,17 @@
+<script>
+console.log(location.href)
+let xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = state_Change;
+xmlhttp.open("GET", location.href, true);
+xmlhttp.send(null);
+function state_Change() {
+    if (xmlhttp.readyState == 4) {
+        if (xmlhttp.status == 200) {
+            let date = xmlhttp.getResponseHeader("Date")
+            console.log("date:" + date) // 2020-12-26T04:19:41.284198+00:00
+        } else {
+            console.log("Problem retrieving data:" + xmlhttp.statusText);
+        }
+    }
+}
+</script>
